@@ -16,7 +16,7 @@ def load_kaggle_data(comp_data_api):
     os.system('chmod 600 ~/.kaggle/kaggle.json')
     # Copy the desired data set locally. Go to the competition's paga, Data tab and copy the API
     # !kaggle competitions do
-    os.system(comp_api)
+    os.system(comp_data_api)
     
 
 def submit_prediction(comp_submission_api):
