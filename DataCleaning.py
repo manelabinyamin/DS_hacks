@@ -22,7 +22,7 @@ def nan_analysis(df):
 
 def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=None, categorical_group_size=10,
                print_feature_type=True, method='median', alternative_method='minimum_impact', num_of_bins=5,
-               inplace=True):
+               inplace=False):
     # Asserts
     assert method in ['median', 'best_predictor', 'minimum_impact'], 'There is no method named {}'.format(method)
     assert alternative_method in ['median',
