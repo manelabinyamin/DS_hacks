@@ -51,21 +51,25 @@ def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=No
     #  drop columns
     original_len = len(df.keys())
     if isinstance(col_nan_threshold, float):
-        df.dropna(axis=1, thresh=len(df) - int(len(df) * col_nan_threshold), inplace=True)
+        count_na = df.isna().sum()
+        count_na = count_na / len(df)
+        cols_to_drop = list(count_na[count_na>col_nan_threshold].kyes())
+        df.dropna(axis=1, thresh=len(df)-int(len(df)*col_nan_threshold), inplace=True)
     else:
         cols_to_drop = []
         for c in list(df.keys()):
             if not c in col_nan_threshold:
-                print('No threshold was specified for feature ' + colored(c,
-                                                                          'red') + '. The column will not be droped'.format(
-                    c))
+                print('No threshold was specified for feature '+colored(c, 'red')+'. The column will not be droped'.format(c))
                 continue
-            nan_ratio = df[c].isna().sum() / len(df)
-            threshold = col_nan_threshold[c]  # if c in col_nan_threshold else 1
+            nan_ratio = df[c].isna().sum()/len(df)
+            threshold = col_nan_threshold[c]# if c in col_nan_threshold else 1
             if nan_ratio > threshold:
                 cols_to_drop.append(c)
         df.drop(cols_to_drop, axis=1, inplace=True)
-    print("{} columns was dropped".format(original_len - len(df.keys())))
+    dropping_comment = "{} columns was dropped".format(len(cols_to_drop))
+    if len(cols_to_drop)>0:
+        dropping_comment += ': '+ ', '.join(map(str, cols_to_drop))
+    print(dropping_comment)
     print('Dropped rows and columns successfully!')
     print('---------------------------------------------------------------------')
 
