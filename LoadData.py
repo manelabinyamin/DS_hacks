@@ -18,7 +18,6 @@ def load_Kaggle2Collab(comp_api):
     # !kaggle competitions do
     os.system(comp_api)
     
-    kaggle competitions download -c nfl-big-data-bowl-2020
 
 def submit_prediction(comp_submission_api):
     files.upload()
