@@ -16,3 +16,4 @@ def load_Kaggle2Collab(comp_api):
     os.system('chmod 600 ~/.kaggle/kaggle.json')
     # Copy the desired data set locally. Go to the competition's paga, Data tab and copy the API
     # !kaggle competitions do
+    os.system(comp_api)
