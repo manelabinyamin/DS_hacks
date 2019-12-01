@@ -2,7 +2,7 @@ from google.colab import files
 import pandas as pd
 import os
 
-def load_Kaggle2Collab(comp_data_api):
+def load_kaggle_data(comp_data_api):
     files.upload()
 
     # Next, install the Kaggle API client.
