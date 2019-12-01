@@ -10,7 +10,7 @@ def load_Kaggle2Collab(comp_api):
     # The Kaggle API client expects this file to be in ~/.kaggle,
     # so move it there.
     os.system('mkdir -p ~/.kaggle')
-    os.system('cp kaggle.json ~/.kaggle/')'
+    os.system('cp kaggle.json ~/.kaggle/')
 
     # This permissions change avoids a warning on Kaggle tool startup.
     os.system('chmod 600 ~/.kaggle/kaggle.json')
