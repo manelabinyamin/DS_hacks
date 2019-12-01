@@ -16,7 +16,7 @@ I built this repo for my own needs, and the use of them is under your responsabi
 * termcolor
 
 # Documantation
-# Table of Content
+## Table of Content
 * Kaggle with notebooks
 * Data cleaning
 > * Nans visualization
@@ -28,7 +28,7 @@ I built this repo for my own needs, and the use of them is under your responsabi
 > * Plots of categorical features
 * Feature engineering
 
-# Functions
+## Functions
 
 ***
 
