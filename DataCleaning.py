@@ -144,7 +144,7 @@ def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=No
 def __build_feature_dict__(df, feature_type, categorical_group_size, print_feature_type, valid_types):
     feature_type = {} if feature_type is None else feature_type
     # clean unexisted keys
-    keys = feature_type.keys()
+    keys = list(feature_type.keys())
     for k in keys:
         if not k in df.keys():
             del feature_type[k]
