@@ -8,16 +8,16 @@ import numpy as np
 import pprint as pp
 from termcolor import colored
 
-def nan_analysis(df):
+def nan_analysis(df, figure_size=(12, 5)):
     # fig, axs = plt.subplots(3,1)
     # nan ratio in each feature
-    msno.bar(df)
+    msno.bar(df, figsize=figure_size)
     time.sleep(0.2)
     # nan ratio in each row
-    msno.matrix(df)
+    msno.matrix(df, figsize=figure_size)
     time.sleep(0.2)
     # plot nan correlation between features
-    msno.heatmap(df)
+    msno.heatmap(df, figsize=figure_size)
 
 
 def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=None, categorical_group_size=10,
