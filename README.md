@@ -232,9 +232,11 @@ The correlation of two categorical features.
 
 **Arguments:**
 * *x* (list/numpy-array/Series) – The data to normalize.
+* *mean* (float) - The desired mean of the normalized data. **default = None**.
+* *std* (float) - The desired std of the normalized data. **default = None**.
 
 **How to use:**
-Send the data to the function
+Send the data to the function. If mean and/or std is None, the function will use the mean/std of x.
 
 **Output:**
 
