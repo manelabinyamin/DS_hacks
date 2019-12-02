@@ -50,7 +50,7 @@ def plot_line_numeric_over_numeric(y, x, df, hue=None, fig_size=(10,5)):
 
 
 # plot the trend of two numeric featurs. can be splited by a categorical feature.
-def plot_trend_numeric_over_numeric(y, x, df, hue=None, order=1, , fig_size=(10,5)):
+def plot_trend_numeric_over_numeric(y, x, df, hue=None, order=1, fig_size=(10,5)):
     sns.set(font_scale=1)
     if hue is None:
         f, ax = plt.subplots(1, 1, figsize=fig_size)
