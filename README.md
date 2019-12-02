@@ -31,7 +31,9 @@ I built this repo for my own needs, and the use of them is under your responsabi
 > * [plot_numeric_over_categorical](https://github.com/manelabinyamin/DS_hacks#plot_numeric_over_categorical)
 > * [plot_categorical_over_categorical](https://github.com/manelabinyamin/DS_hacks#plot_categorical_over_categorical)
 * Feature engineering
-> * TODO
+> * [feature_normalizer](https://github.com/manelabinyamin/DS_hacks#feature_normalizer)
+> * [build_binary_features](https://github.com/manelabinyamin/DS_hacks#build_binary_features)
+> * [best_binning](https://github.com/manelabinyamin/DS_hacks#best_binning)
 
 ## Functions
 
@@ -259,6 +261,20 @@ Send the data frame and the columns to encode. Multiple columns can be sent as a
 The dataframe concatenated with the binary features.
 ***
 
+### best_binning()
+**Description:** This functions finds the best splitting rule for the desired number of bins and discretize the feature accordingly.
+**Arguments:**
+* *df* (DataFrame) – The dataframe.
+* *col_name* (str) - The columns to bin.
+* *target* (str) - The target feature.
+* *task_type* ('regression' / 'calssification') - The task's type.
+* *num_of_bins* (int) - The number of bins to split the feature to. **default = 4**.
+* *inplace* (bool) - Update the original dataframe. **default = False**.
+
+**Output:**
+
+The dataframe with the binned feature (as well as the original).
+***
 
 ## Authors
 
