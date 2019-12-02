@@ -226,6 +226,21 @@ The correlation of two categorical features.
 
 <img src="https://github.com/manelabinyamin/DS_hacks/blob/master/images/EDA/categorical_over_categorical.PNG" alt="categoricals correlation" width="450"/>
 
+## Feature engineering
+### feature_normalizer()
+**Description:** This function downloads the datasets straight to your colab notebook using kaggle's API.
+
+**Arguments:**
+* *x* (list/numpy-array/Series) – The data to normalize.
+
+**How to use:**
+Send the data to the function
+
+**Output:**
+
+The function will return the normalized data
+***
+
 
 ## Authors
 
