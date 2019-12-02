@@ -38,7 +38,7 @@ def plot_numeric_features(df, hue=None, fig_size=10):
 
 
 # plot the line of two numeric featurs. can be splited by a categorical feature
-def plot_line_numeric_over_numeric(x, y, df, hue=None, fig_size=(10,5)):
+def plot_line_numeric_over_numeric(y, x, df, hue=None, fig_size=(10,5)):
     sns.set(font_scale=1)
     f, ax = plt.subplots(1, 1, figsize=fig_size)
 
