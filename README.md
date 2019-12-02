@@ -243,6 +243,22 @@ Send the data to the function. If mean and/or std is None, the function will use
 The function will return the normalized data
 ***
 
+### build_binary_features()
+**Description:** This function builds binary features form categorical features. This function can handle with categorical features as well as list-of-categorical features.
+
+**Arguments:**
+* *df* (DataFrame) – The dataframe.
+* *cols* (str/list of str) - The columns to encode as multi-hot.
+* *inplace* (bool) - Update the original dataframe. **default = False**.
+
+**How to use:**
+Send the data frame and the columns to encode. Multiple columns can be sent as a list of columns.
+
+**Output:**
+
+The dataframe concatenated with the binary features.
+***
+
 
 ## Authors
 
