@@ -77,6 +77,7 @@ This function plots the nans' patterns in the data.
 
 **Arguments:**
 * *df* (pd.DataFrame) – The DataFrame to analyze
+* *figure_size* (list [width,height]) - the plots' size
 
 **How to use:**
 
