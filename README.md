@@ -149,6 +149,7 @@ This function plots a grid of all numeric features with heatmaps over the featur
 **Arguments:**
 * *df* (pd.DataFrame) – The DataFrame to plot
 * *hue* (str) - Categorical feature to group all other features by. **Default = None**.
+* *figure_size* (float) - The total size of the grid plot
 
 **Output:**
 The function plots a grid plot of all numeric features
