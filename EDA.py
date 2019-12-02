@@ -38,9 +38,9 @@ def plot_numeric_features(df, hue=None, fig_size=10):
 
 
 # plot the line of two numeric featurs. can be splited by a categorical feature
-def plot_line_numeric_over_numeric(x, y, df, hue=None):
+def plot_line_numeric_over_numeric(x, y, df, hue=None, fig_size=(10,10)):
     sns.set(font_scale=1)
-    f, ax = plt.subplots(1, 1, figsize=(10, 10))
+    f, ax = plt.subplots(1, 1, figsize=fig_size)
 
     if hue is None:
         sns.lineplot(x=x, y=y, data=df, ax=ax)
@@ -50,10 +50,10 @@ def plot_line_numeric_over_numeric(x, y, df, hue=None):
 
 
 # plot the trend of two numeric featurs. can be splited by a categorical feature.
-def plot_trend_numeric_over_numeric(y, x, df, hue=None, order=1):
+def plot_trend_numeric_over_numeric(y, x, df, hue=None, order=1, , fig_size=(10,5)):
     sns.set(font_scale=1)
     if hue is None:
-        f, ax = plt.subplots(1, 1, figsize=(10, 5))
+        f, ax = plt.subplots(1, 1, figsize=fig_size)
         sns.regplot(x=x, y=y, data=df, x_estimator=np.mean, order=order)
     else:
         sns.set(rc={'figure.figsize': (10, 5)})
@@ -61,9 +61,9 @@ def plot_trend_numeric_over_numeric(y, x, df, hue=None, order=1):
 
 
 # plot the 3 plots to describe the relations between a numeric and categorical featurs.
-def plot_numeric_over_categorical(num, cat, df):
+def plot_numeric_over_categorical(num, cat, df, , fig_size=(15,5)):
     sns.set(font_scale=2)
-    f, axes = plt.subplots(1, 3, figsize=(45, 15))
+    f, axes = plt.subplots(1, 3, figsize=fig_size)
 
     # dist of numeric over categorical
     lables = sorted(df[cat].unique())
