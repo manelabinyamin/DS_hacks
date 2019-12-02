@@ -18,6 +18,8 @@ I built this repo for my own needs, and the use of them is under your responsabi
 # Documantation
 ## Table of Content
 * Kaggle with notebooks
+> * load_kaggle_data
+> * submit_prediction
 * Data cleaning
 > * Nans visualization
 > * Nans cleaning
