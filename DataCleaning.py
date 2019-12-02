@@ -53,7 +53,7 @@ def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=No
     if isinstance(col_nan_threshold, float):
         count_na = df.isna().sum()
         count_na = count_na / len(df)
-        cols_to_drop = list(count_na[count_na>col_nan_threshold].indesx)
+        cols_to_drop = list(count_na[count_na>col_nan_threshold].index)
         df.dropna(axis=1, thresh=len(df)-int(len(df)*col_nan_threshold), inplace=True)
     else:
         cols_to_drop = []
