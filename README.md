@@ -149,7 +149,7 @@ This function plots a grid of all numeric features with heatmaps over the featur
 **Arguments:**
 * *df* (pd.DataFrame) – The DataFrame to plot
 * *hue* (str) - Categorical feature to group all other features by. **Default = None**.
-* *figure_size* (float) - The total size of the grid plot
+* *fig_size* (float) - The total size of the grid plot
 
 **Output:**
 The function plots a grid plot of all numeric features
@@ -167,6 +167,7 @@ This function plots the line of two numeric features.
 * *y* (str) - Seconde numreric feature
 * *df* (pd.DataFrame) – The DataFrame to plot
 * *hue* (str) - Categorical feature to group the features by. **Default = None**.
+* *fig_size* (list [width,height]) - The size of the plot.  **Default = [10,5]**.
 
 **Output:**
 This function plots line-plot of two numeric features
@@ -185,6 +186,7 @@ This function plots the trend between two numeric features. The function also es
 * *df* (pd.DataFrame) – The DataFrame to plot
 * *hue* (str) - Categorical feature to group the features by. **Default = None**.
 * *order* (int) - The polynom-order of the regression line. **Default = 1**.
+* *fig_size* (list [width,height]) - The size of the plot.  **Default = [10,5]**.
 
 **Output:**
 This function plots a trend-plot of two numeric features. The regression is calculated for the desired order. 
@@ -201,6 +203,7 @@ This function plots the relation between numeric and categorical features. The f
 * *num* (str) - The numreric feature
 * *cat* (str) - The categorical feature
 * *df* (pd.DataFrame) – The DataFrame to plot
+* *fig_size* (list [width,height]) - The size of the plot.  **Default = [15,5]**.
 
 **Output:**
 Three plots describing the relation between the numeric and categorical features. 
