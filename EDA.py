@@ -25,7 +25,7 @@ def corrplot(data, size_scale=500, marker='s'):
 
 
 # plot grid of plots
-def plot_numeric_features(df, hue=None, fig_size=20):
+def plot_numeric_features(df, hue=None, fig_size=10):
     num_numeric = len(df._get_numeric_data().keys())
     grid = sns.PairGrid(data=df, hue=hue, palette="Set2", height=fig_size/num_numeric)
     # Map a histogram to the diagonal
