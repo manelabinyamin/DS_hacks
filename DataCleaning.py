@@ -24,6 +24,7 @@ def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=No
                print_feature_type=True, method='median', alternative_method='minimum_impact', num_of_bins=5,
                inplace=False):
     # Asserts
+    valid_types = ['id', 'categorical', 'numeric', 'str']
     assert method in ['median', 'best_predictor', 'minimum_impact'], 'There is no method named {}'.format(method)
     assert alternative_method in ['median',
                                   'minimum_impact'], 'alternative_method must be in [median,minimum_impact], but got {}'.format(
@@ -36,10 +37,10 @@ def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=No
                       dict) or feature_type is None, 'feature_type must be either dict or None, but got {}'.format(
         type(feature_type))
     if isinstance(feature_type, dict):
-        assert all(x in ['categorical', 'numeric', 'str'] for x in set(
-            feature_type.values())), 'The valid types are [id,categorical,numeric,str], but feature_type contains {}'.format(
-            set(feature_type.values()))
-
+        assert all(x in valid_types for x in set(
+            feature_type.values())), 'The valid types are {}, but feature_type contains {}'.format(
+            set(valid_types, feature_type.values()))
+        
     if not inplace:
         df = df.copy()
     # Drop nans
@@ -75,7 +76,8 @@ def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=No
 
     # Build feature dictionary
     print('Buiding feature type dict...')
-    feature_type = __build_feature_dict__(df, feature_type, categorical_group_size, print_feature_type)
+    print('Valid types are: ', ' / '.join(map(str, valid_types)))
+    feature_type = __build_feature_dict__(df, feature_type, categorical_group_size, print_feature_type, valid_types)
     print('Built feature type dict successfully!')
     print('---------------------------------------------------------------------')
 
@@ -139,7 +141,7 @@ def clean_nans(df, row_nan_threshold=0.3, col_nan_threshold=0.3, feature_type=No
     return df
 
 
-def __build_feature_dict__(df, feature_type, categorical_group_size, print_feature_type):
+def __build_feature_dict__(df, feature_type, categorical_group_size, print_feature_type, valid_types):
     feature_type = {} if feature_type is None else feature_type
     # clean unexisted keys
     for k in feature_type.keys():
@@ -164,7 +166,12 @@ def __find_type__(x, f, average_group_size=10, num_of_labels_warning=20):
                 f, num_of_labels_warning, f)
             print(colored(warning, 'red'))
     elif np.issubdtype(x.dtype, np.number):
-        t = 'numeric'
+        if all(x == x.index) or all(x == x.index+1):
+            t = 'id'
+            warning = "Warning: feature {} was classified as id".format(f)
+            print(colored(warning, 'red'))
+        else:
+            t = 'numeric'
     else:
         t = 'str'
         if n_labels < x.count():  # hes repetition
