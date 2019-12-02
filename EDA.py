@@ -61,7 +61,7 @@ def plot_trend_numeric_over_numeric(y, x, df, hue=None, order=1, , fig_size=(10,
 
 
 # plot the 3 plots to describe the relations between a numeric and categorical featurs.
-def plot_numeric_over_categorical(num, cat, df, , fig_size=(15,5)):
+def plot_numeric_over_categorical(num, cat, df, fig_size=(15,5)):
     sns.set(font_scale=2)
     f, axes = plt.subplots(1, 3, figsize=fig_size)
 
