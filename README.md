@@ -261,19 +261,19 @@ Send the data frame and the columns to encode. Multiple columns can be sent as a
 The dataframe concatenated with the binary features.
 ***
 
-### best_binning()
-**Description:** This functions finds the best splitting rule for the desired number of bins and discretize the feature accordingly.
+### get_best_binning_rules()(x, target, target_type, num_of_bins=4, had_high_bound=True)
+**Description:** This functions finds the best splitting rule for the desired number of bins and return them. The rules automatically contains the lower bound.
+
 **Arguments:**
-* *df* (DataFrame) – The dataframe.
-* *col_name* (str) - The columns to bin.
-* *target* (str) - The target feature.
+* *x* (pd.Series / list) - The data to bin.
+* *target* (pd.Series / list) - The target data.
 * *task_type* ('regression' / 'calssification') - The task's type.
 * *num_of_bins* (int) - The number of bins to split the feature to. **default = 4**.
-* *inplace* (bool) - Update the original dataframe. **default = False**.
+* *had_high_bound* (bool) - Should the rules include the high bound (inf). **default = True**.
 
 **Output:**
 
-The dataframe with the binned feature (as well as the original).
+The rules for the binning. Can be used using `pd.cut()`.
 ***
 
 ## Authors
