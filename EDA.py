@@ -7,6 +7,7 @@ import time
 import math
 import pprint as pp
 from termcolor import colored
+import warnings
 
 
 def corrplot(data, size_scale=500, marker='s'):
@@ -49,15 +50,20 @@ def plot_line_numeric_over_numeric(y, x, df, hue=None, fig_size=(10,5)):
         sns.lineplot(x=x, y=y, hue=hue, data=df, ax=ax)
 
 
-# plot the trend of two numeric featurs. can be splited by a categorical feature.
-def plot_trend_numeric_over_numeric(y, x, df, hue=None, order=1, fig_size=(10,5)):
+# plot the trend of one feature (at least ordinal) over another. can be grouped by a nominal feature.
+def plot_trend_ordinal_over_feature(y, x, df, hue=None, order=1, fig_size=(10,5)):
     sns.set(font_scale=1)
     if hue is None:
         f, ax = plt.subplots(1, 1, figsize=fig_size)
-        sns.regplot(x=x, y=y, data=df, x_estimator=np.mean, order=order)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            sns.regplot(x=x, y=y, data=df, x_estimator=np.mean, order=order)
+
     else:
         sns.set(rc={'figure.figsize': (10, 5)})
-        sns.lmplot(x=x, y=y, data=df, x_estimator=np.mean, order=order, hue=hue, height=5, aspect=2)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            sns.lmplot(x=x, y=y, data=df, x_estimator=np.mean, order=order, hue=hue, height=5, aspect=2)
 
 
 # plot the 3 plots to describe the relations between a numeric and categorical featurs.

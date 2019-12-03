@@ -5,10 +5,12 @@ sys.path.insert(0,parentdir)
 import DataCleaning, FeatureEngineering, EDA
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 # classification models
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
 
 
 # Load datasets ------------------------
@@ -37,10 +39,12 @@ clean_data['Sex'] = clean_data['Sex'].astype(float)
 # set Embarked to numbers
 clean_data['Embarked'] = clean_data['Embarked'].map({'C': 0, 'S': 1, 'Q':2})
 
-# plot results
-# binned_train = clean_data[['Pclass','Sex','binned_Age','binned_Fare','binned_Parch','binned_SibSp','Embarked']]
-# binned_train = pd.concat((binned_train.head(train_size), train['Survived']), axis=1)
-# EDA.plot_numeric_features(binned_train,hue='Survived',fig_size=15)
+# plot features
+binned_train = clean_data[['Pclass','Sex','binned_Age','binned_Fare','binned_Parch','binned_SibSp','Embarked']]
+binned_train = pd.concat((binned_train.head(train_size), train['Survived']), axis=1)
+for f in binned_train.keys():
+    EDA.plot_trend_ordinal_over_feature('Survived', f, binned_train, order=3)
+plt.show()
 
 
 # build binary features
@@ -59,29 +63,31 @@ print('---------------------------------------------------------------------')
 print('Final features:')
 train_x.info()
 
+'''
 # train model
 print('---------------------------------------------------------------------')
 print('Cross-validation scores:')
 models = {
     'LogisticRegression': LogisticRegression(solver='lbfgs'),
     'RandomForestClassifier': RandomForestClassifier(n_estimators=100, max_depth=3),
-    'GradientBoostingClassifier': GradientBoostingClassifier()
+    'GradientBoostingClassifier': GradientBoostingClassifier(),
+    'MLP': MLPClassifier(max_iter=400),
+    'DNN': MLPClassifier(hidden_layer_sizes=(50,50), max_iter=400)
 }
-scores = pd.DataFrame(np.zeros([len(models), 2]), columns=['median', 'std', '25 percentage'], index=models.keys())
+columns = ['0%', '25%', '50%', '75%', '100%']
+scores = pd.DataFrame(np.zeros([len(models), len(columns)]), columns=columns, index=models.keys())
 for m,clf in models.items():
-    cv_score = cross_val_score(clf, train_x, train_y, cv=5)
-    scores.loc[m]['median'] = np.median(cv_score)
-    scores.loc[m]['std'] = np.std(cv_score)
-    scores.loc[m]['25 percentage'] = np.quantile(cv_score,)
+    cv_score = cross_val_score(clf, train_x, train_y, cv=10)
+    scores.loc[m,:] = np.percentile(cv_score, [0,25,50,75,100])
 
 print(scores.head())
-best_model = scores['median'].idxmax()
+best_model = scores['25%'].idxmax()
 print('Best model: ',best_model)
 
 # make prediction
 DS_hacks_submission = test['PassengerId'].to_frame()
-
 clf = models[best_model]
 clf.fit(train_x, train_y)
 DS_hacks_submission['Survived'] = clf.predict(test_x)
-# DS_hacks_submission.to_csv('DS_hacks_submission.csv', index=False)
+DS_hacks_submission.to_csv('DS_hacks_submission.csv', index=False)
+'''
