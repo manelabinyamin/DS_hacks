@@ -25,30 +25,24 @@ def build_binary_features(df, cols, inplace=False):
     return df
 
 
-def best_binning(df, col_name, target, target_type, num_of_bins=4, inplace=False):
-    if not inplace:
-        df = df.copy()
-    assert isinstance(col_name,str), 'col_name must be a string, but got {}'.format(type(col_name))
-    assert col_name in list(df.keys()), '{} not in df'.format(col_name)
+def get_best_binning_rules(x, target, target_type, num_of_bins=4, had_high_bound=True):
     assert target_type in ['numeric','categorical'], 'target_type must be  in [numeric, categorical], but got {}'.format(target_type)
-    bins = [-np.inf]
-    bins = __get_rules__(df, col_name, target, target_type, num_of_bins)
-    bins.append(np.inf)
-    df['binned_'+col_name] = pd.cut(df[col_name], bins=bins, labels=False)
-    return df
+    assert isinstance(target,[list,pd.Series]), 'target must be either a pd.Series or a list, but got {}'.format(type(target))
+    assert isinstance(x,[list,pd.Series]), 'x must be either a pd.Series or a list, but got {}'.format(type(x))
 
-
-def __get_rules__(df, col_name, target, target_type, num_of_bins):
     if target_type == 'categorical':
         DT = DecisionTreeClassifier(max_leaf_nodes=num_of_bins, random_state=0)
     else:
         DT = DecisionTreeRegressor(max_leaf_nodes=num_of_bins, random_state=0)
     # find best split
-    x,y = np.array(list(df[col_name])), list(df[target])
+    x,y = np.array(list(x)), list(target)
     DT.fit(x[:,np.newaxis],y)
     # get splitting rules
     rules = DT.tree_.threshold.tolist()
-    return np.sort(list(set(rules))).tolist()
+    rules = np.sort(list(set(rules))).tolist()
+    if had_high_bount:
+        rules.append(np.inf)
+    return rules
 
 
 def __list2multihot__(df,c):
