@@ -26,11 +26,11 @@ def build_binary_features(df, cols):
 
 
 def get_best_binning_rules(x, target, target_type, num_of_bins=4, had_high_bound=True):
-    assert target_type in ['numeric','categorical'], 'target_type must be  in [numeric, categorical], but got {}'.format(target_type)
+    assert target_type in ['regression', 'classification'], 'target_type must be  in [regression, classification], but got {}'.format(target_type)
     assert isinstance(target,(list,pd.Series)), 'target must be either a pd.Series or a list, but got {}'.format(type(target))
     assert isinstance(x,(list,pd.Series)), 'x must be either a pd.Series or a list, but got {}'.format(type(x))
 
-    if target_type == 'categorical':
+    if target_type == 'calssification':
         DT = DecisionTreeClassifier(max_leaf_nodes=num_of_bins, random_state=0)
     else:
         DT = DecisionTreeRegressor(max_leaf_nodes=num_of_bins, random_state=0)
