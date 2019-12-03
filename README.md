@@ -177,10 +177,10 @@ This function plots line-plot of two numeric features
 <img src="https://github.com/manelabinyamin/DS_hacks/blob/master/images/EDA/plot_line_numeric_over_numeric.PNG" alt="plot line" width="300"/> <img src="https://github.com/manelabinyamin/DS_hacks/blob/master/images/EDA/plot_line_numeric_over_numeric_with_hue.PNG" alt="plot line with hue" width="300"/>
 
 ***
-### plot_trend_numeric_over_numeric()
+### plot_trend_ordinal_over_feature()
 
 **Description:** 
-This function plots the trend between two numeric features. The function also estimates the regression line with the polynomial regression of the desired order.
+This function plots the trend of one feature (at least ordinal) over another feature. The function also estimates the regression line with the polynomial regression of the desired order.
 
 **Arguments:**
 * *x* (str) - First numreric feature
@@ -251,7 +251,6 @@ The function will return the normalized data
 **Arguments:**
 * *df* (DataFrame) – The dataframe.
 * *cols* (str/list of str) - The columns to encode as multi-hot.
-* *inplace* (bool) - Update the original dataframe. **default = False**.
 
 **How to use:**
 Send the data frame and the columns to encode. Multiple columns can be sent as a list of columns.
@@ -261,13 +260,13 @@ Send the data frame and the columns to encode. Multiple columns can be sent as a
 The dataframe concatenated with the binary features.
 ***
 
-### get_best_binning_rules()(x, target, target_type, num_of_bins=4, had_high_bound=True)
+### get_best_binning_rules()
 **Description:** This functions finds the best splitting rule for the desired number of bins and return them. The rules automatically contains the lower bound.
 
 **Arguments:**
 * *x* (pd.Series / list) - The data to bin.
 * *target* (pd.Series / list) - The target data.
-* *task_type* ('regression' / 'calssification') - The task's type.
+* *task_type* ('regression' / 'classification') - The task's type.
 * *num_of_bins* (int) - The number of bins to split the feature to. **default = 4**.
 * *had_high_bound* (bool) - Should the rules include the high bound (inf). **default = True**.
 
