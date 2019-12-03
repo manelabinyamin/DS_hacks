@@ -3,6 +3,7 @@ from scipy.stats import rankdata
 import numpy as np
 import pandas as pd
 
+
 def feature_normalizer(x, mean=None, std=None):
     mean = np.mean(x) if mean is None else mean
     std = np.std(x) if std is None else std
@@ -14,9 +15,8 @@ def feature_normalizer(x, mean=None, std=None):
     return dist_data[sort_idx]
 
 
-def build_binary_features(df, cols, inplace=False):
+def build_binary_features(df, cols):
     assert isinstance(cols,(str, list)), 'cols must be either a string or a list, but got {}'.format(type(cols))
-    df = df.copy() if not inplace else df
     cols = [cols] if not isinstance(cols, list) else cols
     for c in cols:
         assert c in df.keys(), 'feature {} does not exist in df'.format(c)
@@ -40,7 +40,7 @@ def get_best_binning_rules(x, target, target_type, num_of_bins=4, had_high_bound
     # get splitting rules
     rules = DT.tree_.threshold.tolist()
     rules = np.sort(list(set(rules))).tolist()
-    if had_high_bount:
+    if had_high_bound:
         rules.append(np.inf)
     return rules
 
