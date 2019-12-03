@@ -5,15 +5,22 @@ Useful general functions for data science projects
 'DS_hacks' is a reposotory contains usefull functions I built (or copied from the wide internet) for when starting new DS projects.
 I built this repo for my own needs, and the use of them is under your responsability. The functions in this repo was built while using google-colab, but should work for scripts as well.
 
+## How to Use:
+clone the repo to your project's folder and import as regular python module.
+
 ## Dependencies:
 * numpy
 * pandas
 * matplotlib
 * seaborn
 * missingno
+* scipy
+* sklearn
 * pandas-profiling
 * pprint
 * termcolor
+* warnings
+* time
 
 # Documantation
 ## Table of Content
