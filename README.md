@@ -266,7 +266,7 @@ The dataframe concatenated with the binary features.
 **Arguments:**
 * *x* (pd.Series / list) - The data to bin.
 * *target* (pd.Series / list) - The target data.
-* *task_type* ('regression' / 'calssification') - The task's type.
+* *task_type* ('regression' / 'classification') - The task's type.
 * *num_of_bins* (int) - The number of bins to split the feature to. **default = 4**.
 * *had_high_bound* (bool) - Should the rules include the high bound (inf). **default = True**.
 
