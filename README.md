@@ -34,7 +34,7 @@ clone the repo to your project's folder and import as regular python module.
 > * [corrplot](https://github.com/manelabinyamin/DS_hacks#corrplot)
 > * [plot_numeric_features](https://github.com/manelabinyamin/DS_hacks#plot_numeric_features)
 > * [plot_line_numeric_over_numeric](https://github.com/manelabinyamin/DS_hacks#plot_line_numeric_over_numeric)
-> * [plot_trend_numeric_over_numeric](https://github.com/manelabinyamin/DS_hacks#plot_trend_numeric_over_numeric)
+> * [plot_trend_ordinal_over_feature](https://github.com/manelabinyamin/DS_hacks#plot_trend_ordinal_over_feature)
 > * [plot_numeric_over_categorical](https://github.com/manelabinyamin/DS_hacks#plot_numeric_over_categorical)
 > * [plot_categorical_over_categorical](https://github.com/manelabinyamin/DS_hacks#plot_categorical_over_categorical)
 * Feature engineering
