@@ -2,11 +2,6 @@ from matplotlib import pyplot as plt
 import pandas as pd
 import seaborn as sns
 import numpy as np
-import missingno as msno
-import time
-import math
-import pprint as pp
-from termcolor import colored
 import warnings
 
 

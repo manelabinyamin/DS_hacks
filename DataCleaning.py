@@ -1,12 +1,10 @@
 # visualize missing values
 import missingno as msno
-import matplotlib.pyplot as plt
 import time
-import seaborn as sns
-import math
 import numpy as np
 import pprint as pp
 from termcolor import colored
+import pandas as pd
 
 def nan_analysis(df, figure_size=(12, 5)):
     # fig, axs = plt.subplots(3,1)
